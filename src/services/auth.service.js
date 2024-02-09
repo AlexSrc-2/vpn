@@ -7,10 +7,9 @@ class AuthService {
             username,
             password
         }).then(response => {
-            console.log(response)
             if (response.data.data.token) {
-                TokenService.setUser(response.data.data.data);
                 TokenService.setToken(response.data.data.token);
+                TokenService.setUser(response.data.data.data);
             }
 
             return response.data;
@@ -19,7 +18,7 @@ class AuthService {
 
     logout(){
         TokenService.removeUser();
-        TokenService.removeToken(response.data.data.data);
+        TokenService.removeToken();
     }
 
     register({username, email, password}) {
